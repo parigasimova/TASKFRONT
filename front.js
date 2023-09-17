@@ -1,25 +1,48 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent the form from submitting normally
+const form = document.querySelector('.form');
+    const clearbtn = document.querySelector('.clear');
+    const delform = document.querySelector('.delform');
+    const did = document.querySelector('.did');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        
+        const cid = form.querySelector('.cid').value;
+        const name = form.querySelector('.name').value;
+        const surname = form.querySelector('.surname').value;
+        const password = form.querySelector('.password').value;
 
-    // Get the values from the form
-    const id = document.getElementById('id').value;
-    const name = document.getElementById('name').value;
-    const surname = document.getElementById('surname').value;
-    const password = document.getElementById('password').value;
 
-    // You can perform actions like sending the data to a server here
-    // For this example, we'll just log the values to the console
-    console.log(`Logged in with ID: ${id}, Name: ${name}, Surname: ${surname}, Password: ${password}`);
-});
+        if (name.length < 3) {
+            alert('Adınız ən azı 3 hərfdən ibarət olmalıdır.');
+            return;
+        }
 
-document.getElementById('deleteForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent the form from submitting normally
+        if (surname.length < 3) {
+            alert('Soyadınız ən azı 3 hərfdən ibarət olmalıdır.');
+            return;
+        }
 
-    // Get the ID to delete
-    const deleteId = document.getElementById('deleteId').value;
+        const user = {
+            cid,
+            name,
+            surname,        
+            password,
+        };
+        console.log(user);
 
-    // You can perform actions like deleting the user with this ID from a database here
-    // For this example, we'll just log the ID to be deleted to the console
-    console.log(`Deleting user with ID: ${deleteId}`);
-});
+       axios.post("https://back-1ztj.onrender.com/users", user);
 
+    });
+
+
+    delform.addEventListener('submit' , function(e) {
+        e.preventDefault();
+        console.log(did);
+         axios.delete(`https://back-1ztj.onrender.com/users/${did.value}`);
+
+    } );
+
+
+    clearbtn.addEventListener('click', function () {
+        form.reset();
+    });
+    

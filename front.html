@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login and Deletion Form</title>
+</head>
+<body>
+    <h2>User Login and Deletion Form</h2>
+    
+    <!-- Login Form -->
+    <form id="loginForm">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required><br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <!-- Delete User Form -->
+    <h3>Delete User</h3>
+    <form id="deleteForm">
+        <label for="deleteId">ID:</label>
+        <input type="text" id="deleteId" name="deleteId" required><br><br>
+
+        <input type="submit" value="Delete User">
+    </form>
+    <script src="front.js"></script>
+
+</body>
+
+</html>
